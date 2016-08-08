@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
   	@posts = Post.all.order('created_at DESC')
@@ -10,11 +11,11 @@ class PostsController < ApplicationController
   end
 
   def new
-  	@post = Post.new
+  	@post = current_user.posts.build
   end
 
   def create
-  	@post = Post.new(post_params)
+  	@post = current_user.posts.build(post_params)
 
   	if @post.save
   	  redirect_to @post
@@ -27,17 +28,24 @@ class PostsController < ApplicationController
   end
 
   def update
-  	if @post.update(post_params)
-  	  redirect_to @post
-  	else
-  	  render 'edit'
-  	end
+  	if @post.user_id == current_user.id
+      if @post.update(post_params)
+    	  redirect_to @post
+    	else
+    	  render 'edit'
+    	end
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
-  	if @post.destroy
-  	  redirect_to root_path
-  	end
+    if @post.user_id == current_user.id
+      @post.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
