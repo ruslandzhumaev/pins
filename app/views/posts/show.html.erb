@@ -1,3 +1,4 @@
+<small><%= @post.category && @post.category.name %></small>
 <h1><%= @post.title %></h1>
 <% if @post.image? %>
   <%= image_tag @post.image.url(:medium) %>

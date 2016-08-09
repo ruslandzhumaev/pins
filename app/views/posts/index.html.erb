@@ -12,6 +12,7 @@
 
 <% @posts.each do |post| %>
   <p>
+    <small><%= post.category && post.category.name %></small><br>
   	<% if post.image? %>
       <%= link_to image_tag(post.image.url(:thumb)), post_path(post) %><br>
     <% end %>

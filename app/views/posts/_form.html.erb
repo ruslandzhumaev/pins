@@ -1,6 +1,11 @@
 <%= form_for @post, html: { multipart: true } do |f| %>
 
 <p>
+  <%= f.label :category_id %><br>
+  <%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "Select One" %>
+</p>
+
+<p>
   <%= f.label :title %><br>
   <%= f.text_field :title %>
 </p>
