@@ -1,6 +1,14 @@
 <%= form_for @post, html: { multipart: true } do |f| %>
 
 <p>
+  <% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |message| %>
+  	  <b><%= message %></b><br>
+    <% end %>
+  <% end %>
+</p>
+
+<p>
   <%= f.label :category_id %><br>
   <%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "Select One" %>
 </p>
