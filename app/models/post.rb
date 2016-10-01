@@ -8,4 +8,7 @@ class Post < ApplicationRecord
   validates :category_id, presence: true
   validates :title, presence: true
   validates :text, presence: true
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 end
