@@ -1,5 +1,11 @@
 <h1>All posts</h1>
 
+<% @categories.each do |category| %>
+  <a href="/posts/<%= category.id %>"><%= category.name %></a>
+<% end %>
+
+<hr>
+
 <% if user_signed_in? %>
   <hr>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
