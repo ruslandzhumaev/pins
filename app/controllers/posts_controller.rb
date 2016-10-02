@@ -6,6 +6,8 @@ class PostsController < ApplicationController
   def index
   	if params[:category_id]
       @posts = Post.where(:category_id => params[:category_id]).order('created_at DESC')
+    elsif params[:search]
+      @posts = Post.search(params[:search])
     else
       @posts = Post.all.order('created_at DESC')
     end

@@ -25,3 +25,7 @@
     <%= link_to post.title, post_path(post) %>
   </p>
 <% end %>
+
+<% if @posts.blank? %>
+  <h4>There are no Pins containing the term <%= params[:search] %>.</h4>
+<% end %>
