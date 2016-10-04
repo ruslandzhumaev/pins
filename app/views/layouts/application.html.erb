@@ -9,10 +9,19 @@
   </head>
 
   <body>
-  <%= render "posts/navigation" %>
-  	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  
+    <%= render "posts/navigation" %>
 
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-info">
+          <a href="#" data-dismiss="alert" class="close">×</a>
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+    
     <%= yield %>
+  
   </body>
 </html>

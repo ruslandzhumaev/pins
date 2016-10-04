@@ -5,11 +5,11 @@ class PostsController < ApplicationController
 
   def index
   	if params[:category_id]
-      @posts = Post.where(:category_id => params[:category_id]).order('created_at DESC')
+      @posts = Post.where(:category_id => params[:category_id]).order('created_at DESC').paginate(:page => params[:page], :per_page => 16)
     elsif params[:search]
-      @posts = Post.search(params[:search]).order('created_at DESC')
+      @posts = Post.search(params[:search]).order('created_at DESC').paginate(:page => params[:page], :per_page => 16)
     else
-      @posts = Post.all.order('created_at DESC')
+      @posts = Post.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 16)
     end
   end
 
