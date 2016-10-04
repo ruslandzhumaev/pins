@@ -1,13 +1,20 @@
-<% @posts.each do |post| %>
-  <p>
-    <small><%= post.category && post.category.name %></small><br>
-  	<% if post.image? %>
-      <%= link_to image_tag(post.image.url(:thumb)), post_path(post) %><br>
-    <% end %>
-    <%= link_to post.title, post_path(post) %>
-  </p>
-<% end %>
-
-<% if @posts.blank? %>
-  <h4>There are no Pins containing the term <%= params[:search] %>.</h4>
-<% end %>
+<div class="container">
+  <div class="row">
+    <section id="pinBoot">
+      <% if @posts.blank? %>
+        <h4>There are no Pins containing the term <%= params[:search] %>.</h4>
+      <% end %>
+      <% @posts.each do |post| %>
+        <article class="white-panel">
+          <% if post.image? %>
+            <%= link_to image_tag(post.image.url(:thumb)), post_path(post) %>
+          <% end %>
+          <h4><%= link_to post.title, post_path(post) %></h4>
+          <p><%= truncate(post.text, length: 150) %></p>
+          <hr>
+          <small>Category: <span class="label label-default"><%= post.category && post.category.name %></span> Posted on <%= post.created_at.strftime("%d %b. %Y") %></small>
+        </article>
+      <% end %>
+    </section>
+  </div>
+</div>
