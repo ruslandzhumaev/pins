@@ -1,0 +1,85 @@
+/*
+Ref:
+Thanks to:
+http://www.jqueryscript.net/layout/Simple-jQuery-Plugin-To-Create-Pinterest-Style-Grid-Layout-Pinterest-Grid.html
+*/
+
+body {
+ background-color:#F1F1F1;   
+}
+
+.navbar {
+  border-width: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0px -1px 29px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -1px 29px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 29px -5px rgba(0,0,0,0.75);
+}
+
+#pinBoot {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+}
+.white-panel img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+}
+.white-panel {
+  position: absolute;
+  background: white;
+  -webkit-box-shadow: 0px -1px 63px -30px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -1px 63px -30px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 63px -30px rgba(0,0,0,0.75);
+  padding: 10px;
+}
+/*
+stylize any heading tags withing white-panel below
+*/
+
+.white-panel h1 {
+  font-size: 1em;
+}
+.white-panel h1 a {
+  color: #A92733;
+}
+.white-panel a:hover {
+  text-decoration: none;
+}
+.white-panel:hover {
+  margin-top: -5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.white-panel hr {
+  margin-bottom: 10px;
+}
+
+.post {
+  background-color: white;
+  padding: 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  color: #666666;
+  font-size: 17px;
+}
+.post h1 {
+  padding: 0;
+  margin: 0 0 10px 0;
+  color: #666666;
+}
+.post img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+.main-navigation {
+  text-align: center;
+}
