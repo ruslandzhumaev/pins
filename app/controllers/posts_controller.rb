@@ -11,7 +11,6 @@ class PostsController < ApplicationController
     else
       @posts = Post.all.order('created_at DESC')
     end
-    @categories = Category.all
   end
 
   def show
