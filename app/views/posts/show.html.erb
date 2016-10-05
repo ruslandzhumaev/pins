@@ -1,13 +1,47 @@
-<small><%= @post.category && @post.category.name %></small>
-<h1><%= @post.title %></h1>
-<% if @post.image? %>
-  <%= image_tag @post.image.url(:medium) %>
-<% end %>
-<p><%= @post.text %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <ol class="breadcrumb">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to @post.category.name, posts_path(:category_id => @post.category.id) %></li>
+        <li class="active"><%= @post.title %></li>
+      </ol>
+      <div class="post">
+        <h1><%= @post.title %></h1>
+        <small>Category: <span class="label label-primary"><%= @post.category && @post.category.name %></span> Posted on <%= @post.created_at.strftime("%d %b. %Y") %></small>
+        <% if @post.image? %>
+		  <%= image_tag @post.image.url(:medium) %>
+		<% end %>
+        <p><%= @post.text %></p>
 
-<%= link_to "Back", root_path %>
-<% if user_signed_in? %>
-<% if current_user.id == @post.user_id %>
- | <%= link_to "Edit", edit_post_path(@post) %> | <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
-<% end %>
+        <% if user_signed_in? %>
+		  <% if current_user.id == @post.user_id %>
+			<%= link_to "Edit", edit_post_path(@post), class: "btn btn-default", role: "button" %>
+			<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", role: "button" %>
+		  <% end %>
+		<% end %>
+
+      </div>
+
+      <h3>Share your opinion:</h3>
+      <div id="disqus_thread"></div>
+	  <script>
+	  var disqus_config = function () {
+	      this.page.url = "<%= request.original_url %>";
+	      this.page.identifier = "<%= @post.id %>";
+	  };
+	  (function() { // DON'T EDIT BELOW THIS LINE
+	      var d = document, s = d.createElement('script');
+	      s.src = '//pins-2.disqus.com/embed.js';
+	      s.setAttribute('data-timestamp', +new Date());
+	      (d.head || d.body).appendChild(s);
+	  })();
+	  </script>
+	  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+</div>
