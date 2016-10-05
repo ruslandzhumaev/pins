@@ -1,35 +1,33 @@
 <%= form_for @post, html: { multipart: true } do |f| %>
 
-<p>
   <% if @post.errors.any? %>
     <% @post.errors.full_messages.each do |message| %>
-  	  <b><%= message %></b><br>
+  	  <div class="alert alert-danger" role="alert"><%= message %></div>
     <% end %>
   <% end %>
-</p>
 
-<p>
-  <%= f.label :category_id %><br>
-  <%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "Select One" %>
-</p>
+<div class="form-group">
+  <%= f.label :category_id %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, :prompt => "Select One", class: "form-control" %>
+</div>
 
-<p>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-</p>
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
+</div>
 
-<p>
-  <%= f.label :image %><br>
-  <%= f.file_field :image %>
-</p>
+<div class="form-group">
+  <%= f.label :image %>
+  <%= f.file_field :image, class: "btn btn-default btn-file" %>
+</div>
 
-<p>
-  <%= f.label :text %><br>
-  <%= f.text_area :text %>
-</p>
+<div class="form-group">
+  <%= f.label :text %>
+  <%= f.text_area :text, class: "form-control", rows: "7" %>
+</div>
 
-<p>
-  <%= f.submit %>
-</p>
+<div class="form-group">
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+</div>
 
 <% end %>
