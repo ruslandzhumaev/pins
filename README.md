@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pins is a discussion platform with a Pinterest-style design, where you can discuss user's topics or sign up and suggest your on topic for disqussion. Each Pin (post or topic) belongs to a certain category. Users have opportunity to add a picture to the topic. Please note that Pins is a training project for my portfolio.
 
-Things you may want to cover:
+List of the gems I used:
 
-* Ruby version
+* Devise
 
-* System dependencies
+* Paperclip
 
-* Configuration
+* Friendly_id
 
-* Database creation
+* Bootstrap-sass
 
-* Database initialization
+* Will_paginate
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
