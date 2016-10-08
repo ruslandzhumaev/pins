@@ -13,6 +13,6 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
 
   def self.search(search)
-	where("title LIKE ? OR text LIKE ?", "%#{search}%", "%#{search}%") 
+    where("title LIKE ? OR text LIKE ?", "%#{search}%", "%#{search}%") 
   end
 end
