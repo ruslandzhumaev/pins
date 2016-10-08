@@ -30,6 +30,7 @@ end
 
 group :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.1'
+  gem 'capybara'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

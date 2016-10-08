@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Post, :type => :model do
   
-  describe "#search" do
+  describe "#search", :type => :feature do
   	
   	it "returns result when there are posts containing the search term in title"
   	it "returns result when there are posts containing the search term in text"
