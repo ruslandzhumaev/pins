@@ -31,6 +31,7 @@ end
 group :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.1'
   gem 'capybara'
+  gem 'factory_girl_rails', '~> 4.7'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
