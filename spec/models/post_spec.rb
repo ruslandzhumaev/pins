@@ -18,7 +18,7 @@ RSpec.describe Post, :type => :model do
   	  expect(posts.first.text).to eq("Test text")
   	  expect(posts.count).to eq(1)
   	end
-  	it "returns search error message when there are no posts containing the search term" do
+  	it "returns no posts when there are no posts containing the search term" do
   	  posts = Post.search('ruby')
   	  expect(posts.count).to eq(0)
   	end
