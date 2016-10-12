@@ -7,6 +7,5 @@ class ApplicationController < ActionController::Base
  
     def record_not_found
       render :file => 'public/404.html', :status => 404, :layout => false
-      #redirect_to root_path, status: 404
     end
 end

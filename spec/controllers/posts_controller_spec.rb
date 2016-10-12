@@ -41,7 +41,20 @@ RSpec.describe PostsController, :type => :feature do
   end
   
   describe "GET #new" do
-    it "renders the :new template"
+    it "renders the :new template if user is signed in" do
+      visit root_path
+      page.click_link 'Sign up'
+      page.fill_in 'Email', :with => "test@email.com"
+      page.fill_in 'Password', :with => "123456"
+      page.fill_in 'Password confirmation', :with => "123456"
+      page.click_button 'Sign up'
+      visit new_post_path
+      expect(page).to have_content("New post")
+    end
+    it "renders 'You need to sign in' message if user in not signed in" do
+      visit new_post_path
+      expect(page).to have_content("You need to sign in or sign up before continuing")
+    end
   end
   
   describe "POST #create" do
