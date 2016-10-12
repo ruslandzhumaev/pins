@@ -58,14 +58,35 @@ RSpec.describe PostsController, :type => :feature do
   end
   
   describe "POST #create" do
+    before :each do
+      create(:category, name: 'Cats')
+      visit root_path
+      page.click_link 'Sign up'
+      page.fill_in 'Email', :with => "test@email.com"
+      page.fill_in 'Password', :with => "123456"
+      page.fill_in 'Password confirmation', :with => "123456"
+      page.click_button 'Sign up'
+      visit new_post_path
+    end
     context "with valid attributes" do
-      it "saves the new post in the database"
-      it "redirects to the home page"
+      it "saves the new post in the database" do
+        page.select 'Cats', :from => 'Category'
+        page.fill_in 'Title', :with => "Test title"
+        page.fill_in 'Text', :with => "Test text"
+        page.click_button "Submit"
+        expect(page).to have_current_path(post_path(id: Post.first.slug))
+      end
     end
     
     context "with invalid attributes" do
-      it "does not save the new post in the database"
-      it "re-renders the :new template"
+      it "does not save the new post in the database" do
+        page.click_button "Submit"
+        expect(Post.exists?).to be_falsey
+      end
+      it "re-renders the :new template" do
+        page.click_button "Submit"
+        expect(page).to have_content("New post")
+      end
     end
   end
 end
