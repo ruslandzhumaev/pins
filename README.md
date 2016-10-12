@@ -16,3 +16,8 @@ List of the gems I used:
 
 * Will_paginate
 
+* RSpec
+
+* Capybara
+
+* Factory Girl
