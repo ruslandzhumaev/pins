@@ -61,7 +61,7 @@ class PostsController < ApplicationController
   	end
 
   	def find_post
-	  @post = Post.friendly.find(params[:id])
-	end  		
+	    @post = Post.friendly.find(params[:id])
+	  end
 
 end

@@ -26,7 +26,18 @@ RSpec.describe PostsController, :type => :feature do
   end
   
   describe "GET #show" do
-    it "renders the :show template"
+    it "shows post when the post exists" do
+      create(:category)
+      create(:post, title: "Test post")
+
+      visit post_path(:id => 1)
+
+      expect(page).to have_content("Test post")
+    end
+    it "returns 404 when post does not exist" do
+      visit post_path(:id => 1)
+      expect(page.status_code).to eq(404)
+    end
   end
   
   describe "GET #new" do
